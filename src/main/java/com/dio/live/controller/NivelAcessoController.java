@@ -25,7 +25,7 @@ public class NivelAcessoController {
     @GetMapping("/{id}")
     public ResponseEntity<NivelAcesso> findById(@PathVariable("id") long id) throws Exception {
         return ResponseEntity.ok(nivelAcessoService.findById(id)
-                .orElseThrow(() -> new NoSuchElementException("Ocorrência não encontrada")));
+                .orElseThrow(() -> new NoSuchElementException("Nível de acesso não encontrado")));
     }
 
     @PostMapping
