@@ -1,10 +1,9 @@
 package com.dio.live.model;
 
 import lombok.*;
+import org.hibernate.envers.Audited;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -13,8 +12,10 @@ import javax.persistence.ManyToOne;
 @EqualsAndHashCode
 @Builder
 @Entity
+@Audited
 public class Localidade {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @ManyToOne
     private NivelAcesso nivelAcesso;
