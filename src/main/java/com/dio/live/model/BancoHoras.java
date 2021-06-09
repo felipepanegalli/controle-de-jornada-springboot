@@ -22,14 +22,14 @@ public class BancoHoras {
     @NoArgsConstructor
     @EqualsAndHashCode
     @Embeddable
-    public class BancoHorasId implements Serializable {
+    public static class BancoHorasId implements Serializable {
         private long idBancoHoras;
         private long idMovimento;
         private long idUsuario;
     }
 
+    @Id
     @EmbeddedId
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private BancoHorasId id;
     private LocalDateTime dataTrabalhada;
     private BigDecimal quantidadeHoras;
