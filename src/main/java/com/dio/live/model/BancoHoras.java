@@ -1,11 +1,9 @@
 package com.dio.live.model;
 
 import lombok.*;
+import org.hibernate.envers.Audited;
 
-import javax.persistence.Embeddable;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -17,6 +15,7 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode
 @Builder
 @Entity
+@Audited
 public class BancoHoras {
 
     @AllArgsConstructor
@@ -30,6 +29,7 @@ public class BancoHoras {
     }
 
     @EmbeddedId
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private BancoHorasId id;
     private LocalDateTime dataTrabalhada;
     private BigDecimal quantidadeHoras;
