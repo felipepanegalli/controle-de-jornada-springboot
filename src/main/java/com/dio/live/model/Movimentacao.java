@@ -1,10 +1,8 @@
 package com.dio.live.model;
 
 import lombok.*;
-import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
@@ -15,23 +13,15 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode
 @Builder
 @Entity
-@Audited
 public class Movimentacao {
-    @AllArgsConstructor
-    @NoArgsConstructor
-    @EqualsAndHashCode
-    @Embeddable
-    public class MovimentacaoId implements Serializable {
-        private long idMovimento;
-        private long idUsuario;
-    }
-
-    @EmbeddedId
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private MovimentacaoId id;
+    private long id;
     private LocalDateTime dataEntrada;
     private LocalDateTime dataSaida;
     private BigDecimal periodo;
+    @ManyToOne
+    private Usuario usuario;
     @ManyToOne
     private Ocorrencia ocorrencia;
     @ManyToOne
